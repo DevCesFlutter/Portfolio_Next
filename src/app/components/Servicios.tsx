@@ -34,7 +34,7 @@ export default function Servicios() {
             className="relative p-[5px] rounded-xl bg-gradient-to-tr from-gray-500 via-cyan-500 to-blue-500"
           >
             {/* Contenedor interno que no será afectado por la animación */}
-            <div className="dark:bg-black rounded-xl p-6 h-full">
+            <div className="rounded-xl p-6 h-full">
               <h4 className="font-bold mb-2">{title}</h4>
               <p>{desc}</p>
             </div>
