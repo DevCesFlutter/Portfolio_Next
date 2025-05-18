@@ -8,6 +8,7 @@ import Proyectos from "./components/Proyectos";
 import Sobre from "./components/Sobre";
 import Contacto from "./components/Contact";
 import ContactForm from "./components/formulario";
+import CustomFooter from "./components/CustomFooter";
 
 export default function Home() {
   useEffect(() => {
@@ -32,6 +33,7 @@ export default function Home() {
       <Contacto />
 
       <ContactForm />
+      <CustomFooter />
     </main>
   );
 }
