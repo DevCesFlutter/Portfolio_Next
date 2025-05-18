@@ -6,7 +6,7 @@ import { ThemeProvider } from "./theme-provider";
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Mi Portafolio",
+  title: "Portafolio Profesional",
   description: "Desarrollador Web | Frontend | React | Next.js",
 };
 

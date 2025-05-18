@@ -7,6 +7,7 @@ import Servicios from "./components/Servicios";
 import Proyectos from "./components/Proyectos";
 import Sobre from "./components/Sobre";
 import Contacto from "./components/Contact";
+import ContactForm from "./components/formulario";
 
 export default function Home() {
   useEffect(() => {
@@ -14,22 +15,23 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="font-sans bg-white text-gray-900">
+    <main className="font-sans ">
       {/* Navbar */}
       <Navbar />
       {/*Hero Seccion */}
       <Hero />
-      {/* Servicios */}
-      <Servicios />
-
       {/* Proyectos */}
       <Proyectos />
+      {/* Servicios */}
+      <Servicios />
 
       {/* Sobre mí */}
       <Sobre />
 
       {/* Contacto */}
       <Contacto />
+
+      <ContactForm />
     </main>
   );
 }

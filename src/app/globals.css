@@ -1,15 +1,74 @@
 @import "tailwindcss";
 
 @layer utilities {
-  /* Animación Fade-in existente */
-  .animate-fade-in {
-    animation: fadeIn 1s ease-out forwards;
+  /* 🌈 VARIABLES DE TEMA */
+  :root {
+    --background: #ffffff;
+    --foreground: #171717;
+    --gradient-start: #f2f8ff;
+    --gradient-middle: #e2ddff;
+    --gradient-end: #4497fd;
   }
 
-  .delay-200 {
-    animation-delay: 0.2s;
+  .dark {
+    --background: #131212;
+    --foreground: #ededed;
+    --gradient-start: #111827;
+    --gradient-middle: #132a49;
+    --gradient-end: #2b1cfd;
   }
 
+  /* 🎨 ESTILOS GLOBALES */
+  html,
+  body {
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-family: Arial, Helvetica, sans-serif;
+  }
+
+  a {
+    color: var(--foreground);
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: var(--gradient-start);
+  }
+
+  .dark a:hover {
+    color: var(--gradient-end);
+  }
+
+  /* 🔘 BOTONES */
+  .btn {
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    font-weight: bold;
+    background-color: var(--foreground);
+    color: var(--background);
+    transition: background-color 0.3s ease, color 0.3s ease;
+  }
+
+  .btn:hover {
+    background-color: var(--gradient-start);
+    color: var(--foreground);
+  }
+
+  .dark .btn {
+    background-color: var(--foreground);
+    color: var(--background);
+  }
+
+  .dark .btn:hover {
+    background-color: var(--gradient-end);
+    color: var(--foreground);
+  }
+
+  /* ✨ ANIMACIONES */
   @keyframes fadeIn {
     from {
       opacity: 0;
@@ -21,7 +80,15 @@
     }
   }
 
-  /* Animación mejorada para el fondo con gradiente */
+  .animate-fade-in {
+    animation: fadeIn 1s ease-out forwards;
+  }
+
+  .delay-200 {
+    animation-delay: 0.2s;
+  }
+
+  /* 🔄 GRADIENTE ANIMADO */
   @keyframes gradient {
     0% {
       background-position: 0% 50%;
@@ -36,78 +103,20 @@
 
   .animate-gradient {
     background-size: 200% 200%;
-    animation: gradient 6s ease infinite; /* Reducción de tiempo para hacerla más rápida */
+    animation: gradient 6s ease infinite;
   }
-}
 
-:root {
-  /* Colores en modo claro */
-  --background: #ffffff;
-  --foreground: #171717;
-  --gradient-start: #dbeafe; /* Azul claro */
-  --gradient-middle: #ffffff;
-  --gradient-end: #bfdbfe;
-}
-
-/* Configuración de colores para el modo oscuro */
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-    --gradient-start: #111827; /* Gris oscuro */
-    --gradient-middle: #1f2937;
-    --gradient-end: #000000;
+  /* 🔁 BORDE GIRATORIO */
+  @keyframes spin-border {
+    0% {
+      transform: rotate(0deg);
+    }
+    100% {
+      transform: rotate(360deg);
+    }
   }
-}
 
-/* Transición global de colores en el body */
-html,
-body {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Estilos generales para el body */
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
-}
-
-/* Aseguramos que los links tengan color correcto tanto en modo claro como oscuro */
-a {
-  color: var(--foreground);
-  transition: color 0.3s ease;
-}
-
-a:hover {
-  color: var(--gradient-start);
-}
-
-.dark a {
-  color: var(--foreground);
-}
-
-.dark a:hover {
-  color: var(--gradient-end);
-}
-
-/* Estilos para el modo oscuro usando TailwindCSS */
-.dark body {
-  background-color: #0a0a0a; /* Fondo oscuro */
-  color: #ededed; /* Texto claro */
-}
-
-/* Fondo de gradiente para el modo oscuro */
-.dark .animate-gradient {
-  background-size: 200% 200%;
-  animation: gradient 6s ease infinite;
-}
-
-/* Ajuste de colores en links para el modo oscuro */
-.dark a {
-  color: #ededed; /* Enlace claro en modo oscuro */
-}
-
-.dark a:hover {
-  color: #bfdbfe; /* Enlace con hover en modo oscuro */
+  .animate-spin-border {
+    animation: spin-border 2s linear infinite;
+  }
 }
