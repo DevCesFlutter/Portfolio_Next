@@ -31,7 +31,6 @@ export default function Home() {
 
       {/* Contacto */}
       <Contacto />
-
       <ContactForm />
       <CustomFooter />
     </main>

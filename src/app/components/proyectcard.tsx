@@ -27,44 +27,51 @@ export default function ProyectoCard({
 }: Proyecto) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [touchStart, setTouchStart] = useState(0);
-  const [touchEnd, setTouchEnd] = useState(0);
+  const [touchStartX, setTouchStartX] = useState(0);
+  const [touchEndX, setTouchEndX] = useState(0);
   const carouselRef = useRef<HTMLDivElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
 
   // Navegación por gestos táctiles
   const handleTouchStart = (e: React.TouchEvent) => {
-    setTouchStart(e.targetTouches[0].clientX);
+    setTouchStartX(e.touches[0].clientX);
   };
 
   const handleTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+    setTouchEndX(e.touches[0].clientX);
   };
 
   const handleTouchEnd = () => {
-    if (touchStart - touchEnd > 50) {
-      // Deslizar izquierda
-      nextImage();
-    }
-
-    if (touchStart - touchEnd < -50) {
-      // Deslizar derecha
-      prevImage();
-    }
+    if (touchStartX - touchEndX > 50) nextImage(); // Deslizar izquierda
+    if (touchStartX - touchEndX < -50) prevImage(); // Deslizar derecha
   };
 
-  // Auto-ajuste de altura en móviles
+  // Ajustar altura del carrusel en móviles
   useEffect(() => {
-    const adjustHeight = () => {
-      if (carouselRef.current && window.innerWidth < 768) {
-        const width = carouselRef.current.offsetWidth;
-        carouselRef.current.style.height = `${width * 0.75}px`;
+    const updateHeight = () => {
+      if (carouselRef.current) {
+        const aspectRatio = window.innerWidth < 768 ? 1.5 : 1.77; // 3:2 en móvil, 16:9 en desktop
+        carouselRef.current.style.height = `${
+          carouselRef.current.offsetWidth / aspectRatio
+        }px`;
       }
     };
 
-    adjustHeight();
-    window.addEventListener("resize", adjustHeight);
+    updateHeight();
+    window.addEventListener("resize", updateHeight);
+    return () => window.removeEventListener("resize", updateHeight);
+  }, []);
 
-    return () => window.removeEventListener("resize", adjustHeight);
+  // Cerrar modal al hacer clic fuera
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (modalRef.current && !modalRef.current.contains(e.target as Node)) {
+        setSelectedImg(null);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   const nextImage = () => {
@@ -76,15 +83,12 @@ export default function ProyectoCard({
   };
 
   return (
-    <article className="rounded-2xl overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 space-y-4 p-4">
+    <article className="group rounded-2xl overflow-hidden shadow-lg bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 transition-all hover:shadow-xl">
       {/* Carrusel de imágenes */}
       <div className="relative">
         <div
           ref={carouselRef}
-          className="relative w-full overflow-hidden rounded-xl bg-gray-300 dark:bg-gray-700"
-          style={{
-            height: "300px", // Altura por defecto para desktop
-          }}
+          className="relative w-full overflow-hidden bg-gray-100 dark:bg-gray-900"
           onTouchStart={handleTouchStart}
           onTouchMove={handleTouchMove}
           onTouchEnd={handleTouchEnd}
@@ -95,9 +99,7 @@ export default function ProyectoCard({
               onClick={() => setSelectedImg(img)}
               aria-label={`Ver imagen ${idx + 1} en grande`}
               className={`absolute inset-0 w-full h-full transition-opacity duration-300 ${
-                idx === currentIndex
-                  ? "opacity-100"
-                  : "opacity-0 pointer-events-none"
+                idx === currentIndex ? "opacity-100" : "opacity-0"
               }`}
             >
               <img
@@ -105,6 +107,7 @@ export default function ProyectoCard({
                 alt={`${alt} ${idx + 1}`}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                decoding="async"
               />
             </button>
           ))}
@@ -117,36 +120,36 @@ export default function ProyectoCard({
                   e.stopPropagation();
                   prevImage();
                 }}
-                className="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                className="hidden md:block absolute left-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition backdrop-blur-sm"
                 aria-label="Imagen anterior"
               >
-                <FiChevronLeft size={20} />
+                <FiChevronLeft size={24} />
               </button>
               <button
                 onClick={(e) => {
                   e.stopPropagation();
                   nextImage();
                 }}
-                className="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                className="hidden md:block absolute right-4 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition backdrop-blur-sm"
                 aria-label="Siguiente imagen"
               >
-                <FiChevronRight size={20} />
+                <FiChevronRight size={24} />
               </button>
             </>
           )}
         </div>
 
-        {/* Indicadores - Versión móvil más grande */}
+        {/* Indicadores */}
         {imagen.length > 1 && (
-          <div className="flex justify-center mt-2 space-x-2">
+          <div className="absolute bottom-4 left-0 right-0 flex justify-center gap-2">
             {imagen.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-3 h-3 md:w-2 md:h-2 rounded-full ${
+                className={`w-3 h-3 rounded-full transition-all ${
                   idx === currentIndex
-                    ? "bg-blue-600 dark:bg-blue-400"
-                    : "bg-gray-400 dark:bg-gray-600"
+                    ? "bg-white dark:bg-blue-400 scale-125"
+                    : "bg-white/50 dark:bg-gray-600/50 hover:bg-white/70"
                 }`}
                 aria-label={`Ir a imagen ${idx + 1}`}
               />
@@ -156,28 +159,30 @@ export default function ProyectoCard({
       </div>
 
       {/* Contenido */}
-      <div className="text-gray-800 dark:text-gray-100 space-y-3">
-        <h3 className="text-xl font-bold">{titulo}</h3>
-        <p className="text-sm text-gray-600 dark:text-gray-300">
+      <div className="p-5 space-y-3">
+        <h3 className="text-xl font-bold text-gray-800 dark:text-white">
+          {titulo}
+        </h3>
+        <p className="text-gray-600 dark:text-gray-300 line-clamp-3">
           {descripcion}
         </p>
 
-        <div className="flex gap-3 flex-wrap">
+        <div className="flex flex-wrap gap-2 pt-2">
           {repositorio ? (
             <a
               href={repositorio}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 bg-gray-700 text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-blue-600 dark:bg-gray-600 dark:hover:bg-blue-500 transition-colors"
+              className="inline-flex items-center gap-1.5 bg-gray-800 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-gray-700 dark:bg-gray-700 dark:hover:bg-gray-600 transition-colors"
               aria-label="Ver repositorio en GitHub"
             >
-              <FiGithub className="text-sm" />
-              Repositorio
+              <FiGithub size={16} />
+              Código
             </a>
           ) : (
-            <span className="text-gray-500 dark:text-gray-400 italic text-xs flex items-center">
-              <FiGithub className="mr-1" />
-              Repositorio privado
+            <span className="inline-flex items-center gap-1.5 text-gray-500 dark:text-gray-400 text-sm px-4 py-2">
+              <FiGithub size={16} />
+              Privado
             </span>
           )}
 
@@ -186,48 +191,68 @@ export default function ProyectoCard({
               href={url}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-1 bg-gray-700 text-white text-xs font-semibold px-4 py-2 rounded-full hover:bg-green-600 dark:bg-gray-600 dark:hover:bg-green-500 transition-colors"
+              className="inline-flex items-center gap-1.5 bg-blue-600 text-white text-sm font-medium px-4 py-2 rounded-lg hover:bg-blue-700 dark:bg-blue-700 dark:hover:bg-blue-600 transition-colors"
               aria-label="Visitar sitio web"
             >
-              <FiExternalLink className="text-sm" />
-              Ver sitio
+              <FiExternalLink size={16} />
+              Demo
             </a>
           ) : (
-            <span className="text-gray-500 dark:text-gray-400 italic text-xs flex items-center">
-              <FiExternalLink className="mr-1" />
-              Sitio no disponible
+            <span className="inline-flex items-center gap-1.5 text-gray-500 dark:text-gray-400 text-sm px-4 py-2">
+              <FiExternalLink size={16} />
+              No disponible
             </span>
           )}
         </div>
       </div>
 
-      {/* Modal de imagen - Mejorado para móviles */}
+      {/* Modal para imagen */}
       {selectedImg && (
-        <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 touch-none"
-          onClick={() => setSelectedImg(null)}
-        >
-          <div className="relative w-full h-full flex items-center justify-center">
+        <div className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4">
+          <div
+            ref={modalRef}
+            className="relative w-full max-w-6xl max-h-[90vh]"
+          >
             <button
               onClick={() => setSelectedImg(null)}
-              className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none z-10 p-2 bg-black/50 rounded-full"
+              className="absolute -top-12 right-0 text-white hover:text-gray-300 p-2"
               aria-label="Cerrar modal"
             >
-              <FiX className="text-2xl" />
+              <FiX size={28} />
             </button>
-            <div
-              className="w-full h-full flex items-center justify-center"
-              onClick={(e) => e.stopPropagation()}
-            >
+            <div className="w-full h-full overflow-auto touch-pan-y">
               <img
                 src={selectedImg}
                 alt={alt}
-                className="max-w-full max-h-full object-contain"
-                style={{
-                  touchAction: "none", // Evita zoom no deseado en móviles
-                }}
+                className="w-full h-auto max-h-[80vh] object-contain"
               />
             </div>
+
+            {/* Controles en modal para móviles */}
+            {imagen.length > 1 && (
+              <div className="flex justify-between mt-4">
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    prevImage();
+                  }}
+                  className="bg-white/10 text-white p-3 rounded-full hover:bg-white/20 backdrop-blur-sm"
+                  aria-label="Imagen anterior"
+                >
+                  <FiChevronLeft size={24} />
+                </button>
+                <button
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    nextImage();
+                  }}
+                  className="bg-white/10 text-white p-3 rounded-full hover:bg-white/20 backdrop-blur-sm"
+                  aria-label="Siguiente imagen"
+                >
+                  <FiChevronRight size={24} />
+                </button>
+              </div>
+            )}
           </div>
         </div>
       )}
