@@ -1,4 +1,5 @@
-import { useState } from "react";
+"use client";
+import { useState, useRef, useEffect } from "react";
 import {
   FiGithub,
   FiExternalLink,
@@ -26,6 +27,45 @@ export default function ProyectoCard({
 }: Proyecto) {
   const [selectedImg, setSelectedImg] = useState<string | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [touchStart, setTouchStart] = useState(0);
+  const [touchEnd, setTouchEnd] = useState(0);
+  const carouselRef = useRef<HTMLDivElement>(null);
+
+  // Navegación por gestos táctiles
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const handleTouchEnd = () => {
+    if (touchStart - touchEnd > 50) {
+      // Deslizar izquierda
+      nextImage();
+    }
+
+    if (touchStart - touchEnd < -50) {
+      // Deslizar derecha
+      prevImage();
+    }
+  };
+
+  // Auto-ajuste de altura en móviles
+  useEffect(() => {
+    const adjustHeight = () => {
+      if (carouselRef.current && window.innerWidth < 768) {
+        const width = carouselRef.current.offsetWidth;
+        carouselRef.current.style.height = `${width * 0.75}px`;
+      }
+    };
+
+    adjustHeight();
+    window.addEventListener("resize", adjustHeight);
+
+    return () => window.removeEventListener("resize", adjustHeight);
+  }, []);
 
   const nextImage = () => {
     setCurrentIndex((prev) => (prev === imagen.length - 1 ? 0 : prev + 1));
@@ -37,9 +77,18 @@ export default function ProyectoCard({
 
   return (
     <article className="rounded-2xl overflow-hidden shadow-lg bg-gray-200 dark:bg-gray-800 border border-gray-300 dark:border-gray-700 space-y-4 p-4">
-      {/* Carrusel de imágenes - Versión grande */}
+      {/* Carrusel de imágenes */}
       <div className="relative">
-        <div className="relative h-120 w-full overflow-hidden rounded-xl bg-gray-300 dark:bg-gray-700">
+        <div
+          ref={carouselRef}
+          className="relative w-full overflow-hidden rounded-xl bg-gray-300 dark:bg-gray-700"
+          style={{
+            height: "300px", // Altura por defecto para desktop
+          }}
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
           {imagen.map((img, idx) => (
             <button
               key={idx}
@@ -55,11 +104,12 @@ export default function ProyectoCard({
                 src={img}
                 alt={`${alt} ${idx + 1}`}
                 className="w-full h-full object-cover"
+                loading="lazy"
               />
             </button>
           ))}
 
-          {/* Controles de navegación */}
+          {/* Controles de navegación - Solo en desktop */}
           {imagen.length > 1 && (
             <>
               <button
@@ -67,7 +117,7 @@ export default function ProyectoCard({
                   e.stopPropagation();
                   prevImage();
                 }}
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                className="hidden md:block absolute left-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
                 aria-label="Imagen anterior"
               >
                 <FiChevronLeft size={20} />
@@ -77,7 +127,7 @@ export default function ProyectoCard({
                   e.stopPropagation();
                   nextImage();
                 }}
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
+                className="hidden md:block absolute right-2 top-1/2 -translate-y-1/2 bg-black/50 text-white p-2 rounded-full hover:bg-black/70 transition"
                 aria-label="Siguiente imagen"
               >
                 <FiChevronRight size={20} />
@@ -86,14 +136,14 @@ export default function ProyectoCard({
           )}
         </div>
 
-        {/* Indicadores */}
+        {/* Indicadores - Versión móvil más grande */}
         {imagen.length > 1 && (
           <div className="flex justify-center mt-2 space-x-2">
             {imagen.map((_, idx) => (
               <button
                 key={idx}
                 onClick={() => setCurrentIndex(idx)}
-                className={`w-2 h-2 rounded-full ${
+                className={`w-3 h-3 md:w-2 md:h-2 rounded-full ${
                   idx === currentIndex
                     ? "bg-blue-600 dark:bg-blue-400"
                     : "bg-gray-400 dark:bg-gray-600"
@@ -151,28 +201,31 @@ export default function ProyectoCard({
         </div>
       </div>
 
-      {/* Modal de imagen */}
+      {/* Modal de imagen - Mejorado para móviles */}
       {selectedImg && (
         <div
-          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
+          className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4 touch-none"
           onClick={() => setSelectedImg(null)}
         >
-          <div className="relative max-w-4xl w-full">
+          <div className="relative w-full h-full flex items-center justify-center">
             <button
               onClick={() => setSelectedImg(null)}
-              className="absolute -top-10 right-0 text-white hover:text-gray-300 focus:outline-none"
+              className="absolute top-4 right-4 text-white hover:text-gray-300 focus:outline-none z-10 p-2 bg-black/50 rounded-full"
               aria-label="Cerrar modal"
             >
               <FiX className="text-2xl" />
             </button>
             <div
-              className="max-w-[90vw] max-h-[90vh] overflow-auto"
+              className="w-full h-full flex items-center justify-center"
               onClick={(e) => e.stopPropagation()}
             >
               <img
                 src={selectedImg}
                 alt={alt}
-                className="w-full h-auto object-contain rounded-lg shadow-xl"
+                className="max-w-full max-h-full object-contain"
+                style={{
+                  touchAction: "none", // Evita zoom no deseado en móviles
+                }}
               />
             </div>
           </div>
