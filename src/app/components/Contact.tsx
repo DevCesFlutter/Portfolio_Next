@@ -1,7 +1,6 @@
 "use client";
 import React from "react";
 import { FaWhatsapp, FaEnvelope, FaFileDownload } from "react-icons/fa";
-import { FiCopy, FiCheck } from "react-icons/fi";
 import EmailWithCopy from "./EmailWithCopy";
 
 export default function Contacto() {

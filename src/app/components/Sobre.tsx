@@ -13,7 +13,7 @@ export default function Sobre() {
         <div className="absolute inset-0 rounded-full bg-gradient-to-tr from-white via-blue-500 to-purple-500 blur-sm animate-spin-border"></div>
         <div className="relative w-full h-full rounded-full overflow-hidden bg-white dark:bg-black  ">
           <img
-            src="images/perfil.jpeg"
+            src="images/PerfilAI.png"
             alt="Foto de perfil"
             className="w-full h-full object-cover rounded-full"
           />

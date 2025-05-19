@@ -1,4 +1,4 @@
-import ProyectoCard, { Proyecto } from "./proyectcard";
+import ProyectoCard, { Proyecto } from "./ProyectoCard";
 
 const proyectos: Proyecto[] = [
   {
@@ -21,8 +21,15 @@ const proyectos: Proyecto[] = [
   {
     titulo: "App Gestion de inventarios y envios",
     descripcion:
-      "Desarrollada con Flutter,dart,SupaBase,permite gestionar el stock y crear envios gestionar su estado de enviado y x enviar.",
-    imagen: ["/images/inven1.3.png", "/images/inven1.2.png"],
+      "Desarrollada con Flutter,dart,SupaBase,permite gestionar el stock y crear envios gestionar su estado de enviado el estado pendientes de enviar.",
+    imagen: [
+      "/images/inven1.1.png",
+      "/images/inven1.2.png",
+      "/images/inven1.3.png",
+      "/images/inven1.4.png",
+      "/images/inven1.5.png",
+      "/images/inven1.6.png",
+    ],
     alt: "App NPS Parque Turistik",
     repositorio: null,
     url: "",
