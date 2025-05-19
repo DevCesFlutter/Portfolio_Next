@@ -15,10 +15,11 @@ export default function Hero() {
 
       {/* Contenido principal */}
       <div className="relative z-20 text-[var(--foreground)] animate-fade-in delay-200">
-        <h2 className="text-4xl sm:text-6xl font-bold mb-4">
-          Desarrollador/FrontEnd
-        </h2>
-        <p className="text-xl sm:text-2xl mb-6">
+        <h1 className="text-4xl sm:text-6xl font-bold mb-4">Cesar Negrete</h1>
+        <h3 className="text-3xl sm:text-4xl font-light mb-4">
+          Desarrollador FullStack
+        </h3>
+        <p className="text-xs sm:text-2xl font-sans mb-6">
           Webs modernas y apps móviles para negocios reales
         </p>
         <a

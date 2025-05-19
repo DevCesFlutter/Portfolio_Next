@@ -1,4 +1,5 @@
 import React from "react";
+import EmailWithCopy from "./EmailWithCopy";
 
 export default function Contacto() {
   const handleDownloadCV = async () => {
@@ -24,15 +25,11 @@ export default function Contacto() {
   };
 
   return (
-    <section
-      id="contact"
-      className="py-20 px-6 text-center bg-gray-100 dark:bg-gray-800"
-    >
+    <section id="contact" className="py-20 px-6 text-center">
+      <div className="px-120"></div>
       <div className="max-w-4xl mx-auto">
-        <h3 className="text-3xl font-semibold mb-6 text-gray-800 dark:text-white">
-          Contacto
-        </h3>
-        <p className="mb-8 text-lg text-gray-600 dark:text-gray-300">
+        <h3 className="text-3xl font-semibold mb-6  ">Contacto</h3>
+        <p className="mb-8 text-lg ">
           ¿Tienes un proyecto en mente o quieres conocer más sobre mi trabajo?
         </p>
 
@@ -90,6 +87,9 @@ export default function Contacto() {
             Descargar CV
           </button>
         </div>
+        <br />
+        <br />
+        <EmailWithCopy />
       </div>
     </section>
   );

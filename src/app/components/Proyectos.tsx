@@ -33,7 +33,7 @@ const proyectos: Proyecto[] = [
       "Desarrollada con Next,js/taildwindcss, Pagina web reponsive enfocada en la promocion y el llamado a la accion De los Posibles Clientes de FastBordados Permite La busqueda Indexada Con la clave fastbordados.app",
     imagen: [
       "/images/fast1.PNG",
-      "/images/fast2.PNG",
+      "/images/fast2.png",
       "/images/fast3.PNG",
       "/images/fast4.PNG",
     ],

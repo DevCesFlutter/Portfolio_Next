@@ -5,8 +5,8 @@
   :root {
     --background: #ffffff;
     --foreground: #171717;
-    --gradient-start: #f2f8ff;
-    --gradient-middle: #e2ddff;
+    --gradient-start: #2e8fff;
+    --gradient-middle: #edeaff;
     --gradient-end: #4497fd;
   }
 
@@ -103,7 +103,7 @@
 
   .animate-gradient {
     background-size: 200% 200%;
-    animation: gradient 6s ease infinite;
+    animation: gradient 3s ease infinite;
   }
 
   /* 🔁 BORDE GIRATORIO */
@@ -118,5 +118,63 @@
 
   .animate-spin-border {
     animation: spin-border 2s linear infinite;
+  }
+
+  .email-container {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding: 1rem;
+    border-radius: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    color: var(--text-color);
+  }
+
+  @media (min-width: 600px) {
+    .email-container {
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+  }
+
+  .email-label {
+    font-weight: 600;
+    margin-right: 4px;
+  }
+
+  .copy-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 0.6rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #2563eb; /* Azul */
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background 0.2s ease;
+  }
+
+  .copy-btn:hover {
+    background-color: #1d4ed8;
+  }
+
+  .copy-btn.copied {
+    background-color: #ad0bf8;
+  }
+
+  .icon {
+    font-size: 1.2rem;
+  }
+
+  /* Modo oscuro con next-themes */
+  .dark .email-container {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(255, 255, 255, 0.2);
+    color: white;
   }
 }
