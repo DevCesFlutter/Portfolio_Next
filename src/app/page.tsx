@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 import Hero from "./components/Hero";
 import Navbar from "./components/Navbar";
-import Servicios from "./components/Servicios";
+import Servicios from "./components/Servicios/Servicios";
 import Sobre from "./components/Sobre";
 import Contacto from "./components/Contact";
 import ContactForm from "./components/formulario";

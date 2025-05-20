@@ -8,6 +8,10 @@
     --gradient-start: #2e8fff;
     --gradient-middle: #edeaff;
     --gradient-end: #4497fd;
+    --card-bg: #ffffff;
+    --card-hover: #f9fafb;
+    --card-title: #111827;
+    --card-text: #4b5563;
   }
 
   .dark {
@@ -16,6 +20,11 @@
     --gradient-start: #111827;
     --gradient-middle: #132a49;
     --gradient-end: #2b1cfd;
+    --border: #374151;
+    --card-bg: #1f2937;
+    --card-hover: #374151;
+    --card-title: #f9fafb;
+    --card-text: #d1d5db;
   }
 
   /* 🎨 ESTILOS GLOBALES */

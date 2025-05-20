@@ -6,13 +6,13 @@ import EmailWithCopy from "./EmailWithCopy";
 export default function Contacto() {
   const handleDownloadCV = async () => {
     try {
-      const cvUrl = "/Curriculum_Cesar_Negrete.pdf";
+      const cvUrl = "/CV_Cesar_Negrete.pdf";
       const response = await fetch(cvUrl);
       if (!response.ok) throw new Error("Archivo no disponible");
 
       const link = document.createElement("a");
       link.href = cvUrl;
-      link.download = "CV-Cesar-Negrete.pdf";
+      link.download = "CV-Cesar-Negrete-Infomatico.pdf";
       document.body.appendChild(link);
       link.click();
       document.body.removeChild(link);
