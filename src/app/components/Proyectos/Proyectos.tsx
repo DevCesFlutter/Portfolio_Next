@@ -7,7 +7,6 @@ const proyectos: Proyecto[] = [
       "Desarrollada con Flutter, Node.js, Express y SQL Server. Permite evaluar servicios mediante opciones múltiples y en múltiples idiomas, almacenar datos en una base de datos sql server, gestionar información de forma offline y procesar pedidos en tiempo real.",
     imagen: [
       "/images/turis1.png",
-      "/images/turis5.png",
       "/images/turis2.png",
       "/images/turis3.png",
       "/images/turis4.png",
@@ -23,6 +22,7 @@ const proyectos: Proyecto[] = [
     descripcion:
       "Desarrollada con Flutter,dart,SupaBase,permite gestionar el stock y crear envios gestionar su estado de enviado el estado pendientes de enviar.",
     imagen: [
+      "/images/inven.png",
       "/images/inven1.1.png",
       "/images/inven1.2.png",
       "/images/inven1.3.png",
@@ -30,7 +30,7 @@ const proyectos: Proyecto[] = [
       "/images/inven1.5.png",
       "/images/inven1.6.png",
     ],
-    alt: "App NPS Parque Turistik",
+    alt: "AppInventarius",
     repositorio: null,
     url: "",
   },
@@ -44,7 +44,7 @@ const proyectos: Proyecto[] = [
       "/images/fast3.PNG",
       "/images/fast4.PNG",
     ],
-    alt: "App NPS Parque Turistik",
+    alt: "LandingPageBordados",
     repositorio: "https://github.com/DevCesFlutter/Lading_Fast_Bordados",
     url: "https://fastbordados.vercel.app/",
   },

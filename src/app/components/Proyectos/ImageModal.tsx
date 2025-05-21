@@ -12,6 +12,7 @@ export default function ImageModal({
   alt: string;
   initialIndex: number;
   onClose: () => void;
+  imageClassName?: string;
 }) {
   const [currentIndex, setCurrentIndex] = useState(initialIndex);
   const modalRef = useRef<HTMLDivElement>(null);
