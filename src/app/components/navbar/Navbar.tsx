@@ -27,16 +27,16 @@ export default function Navbar() {
       {/* Menú en pantallas grandes */}
       <div className="hidden md:flex space-x-6">
         <Link
-          href="#services"
-          className="dark:text-white hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
-        >
-          Servicios
-        </Link>
-        <Link
           href="#projects"
           className="dark:text-white hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
         >
           Proyectos
+        </Link>
+        <Link
+          href="#services"
+          className="dark:text-white hover:text-blue-600 dark:hover:text-blue-300 transition-colors"
+        >
+          Servicios
         </Link>
         <Link
           href="#about"

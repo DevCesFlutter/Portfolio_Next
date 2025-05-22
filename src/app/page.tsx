@@ -2,7 +2,7 @@
 
 import { useEffect } from "react";
 import Hero from "./components/Hero";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/navbar/Navbar";
 import Servicios from "./components/Servicios/Servicios";
 import Sobre from "./components/Sobre";
 import Contacto from "./components/Contact";

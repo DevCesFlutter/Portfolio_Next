@@ -10,7 +10,7 @@ export default function Servicios() {
       </h3>
       <CardServicios />
 
-      <div className="mt-16 text-center text-sm opacity-70">
+      <div className="mt-16 text-center font-light text-sm opacity-70">
         <p>Especializado en desarrollo</p>
       </div>
     </section>

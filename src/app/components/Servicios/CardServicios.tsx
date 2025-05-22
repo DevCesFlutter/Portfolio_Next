@@ -5,34 +5,34 @@ export default function CardServicios() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {[
         {
-          title: "Aplicaciones con Next.js",
-          desc: "Desarrollo de apps full-stack con enrutamiento, SSR y API Routes.",
-          highlight: "Rendimiento y SEO integrado",
+          title: "Desarrollo de Apps Móviles",
+          desc: "Creación de aplicaciones móviles multiplataforma utilizando Flutter y Dart.",
+          highlight: "Experiencia con soporte offline y multilenguaje",
         },
         {
-          title: "Frontend Avanzado",
-          desc: "Interfaces dinámicas con React Hooks y Context API.",
-          highlight: "Estado global sin librerías externas",
+          title: "Aplicaciones Web Full-Stack",
+          desc: "Desarrollo de aplicaciones web modernas con Next.js, Node.js y Express.js.",
+          highlight: "Integración de APIs y bases de datos relacionales",
         },
         {
-          title: "Prototipado Rápido",
-          desc: "MVPs funcionales con Next.js + Vercel Instant Deploy.",
-          highlight: "Deploy en minutos",
+          title: "Optimización SEO y Contenido",
+          desc: "Mejora de posicionamiento web mediante técnicas de SEO y generación de contenido con IA.",
+          highlight: "Incremento comprobado en alcance y engagement",
         },
         {
-          title: "Optimización Web",
-          desc: "Auditorías de performance y mejora de Core Web Vitals.",
-          highlight: "Puntuación Lighthouse ≥90",
+          title: "Diseño UI/UX",
+          desc: "Prototipado y diseño de interfaces de usuario atractivas y funcionales con Figma.",
+          highlight: "Enfoque en experiencia de usuario y accesibilidad",
         },
         {
-          title: "Integraciones API",
-          desc: "Conexión con bases de datos y servicios externos.",
-          highlight: "Fetching con SWR/SSR",
+          title: "Integración de APIs y Servicios",
+          desc: "Conexión e integración de servicios externos y APIs RESTful.",
+          highlight: "Uso eficiente de SWR y manejo de datos en tiempo real",
         },
         {
-          title: "Migración a Modern Stack",
-          desc: "Actualización de proyectos legacy a Next.js.",
-          highlight: "Incremental Adoption",
+          title: "Metodologías Ágiles",
+          desc: "Gestión de proyectos y desarrollo ágil utilizando Scrum y Kanban.",
+          highlight: "Certificación en Scrum Fundamentals",
         },
       ].map(({ title, desc, highlight }, i) => (
         <div
@@ -41,7 +41,7 @@ export default function CardServicios() {
           bg-[var(--card-bg)] hover:bg-[var(--card-hover)] transition-all 
           duration-300 group overflow-hidden"
         >
-          {/* Gradiente animado (igual que en Hero) */}
+          {/* Gradiente animado */}
           <div
             className="absolute inset-0 animate-gradient opacity-0 
             group-hover:opacity-10 transition-opacity duration-500"

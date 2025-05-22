@@ -4,7 +4,7 @@ const proyectos: Proyecto[] = [
   {
     titulo: "App NPS Parque Turistik",
     descripcion:
-      "Desarrollada con Flutter, Node.js, Express y SQL Server. Permite evaluar servicios mediante opciones múltiples y en múltiples idiomas, almacenar datos en una base de datos sql server, gestionar información de forma offline y procesar pedidos en tiempo real.",
+      "Desarrollada con Flutter, Node.js, Express y SQL Server. Permite evaluar servicios mediante opciones múltiples() y en múltiples idiomas, almacenar datos en una base de datos sql server, gestionar información de forma offline y Sincronizar al obtener conexion",
     imagen: [
       "/images/turis1.png",
       "/images/turis2.png",
@@ -32,12 +32,12 @@ const proyectos: Proyecto[] = [
     ],
     alt: "AppInventarius",
     repositorio: null,
-    url: "",
+    url: null,
   },
   {
     titulo: "LandingPagePara Pagina Servicio de bordado",
     descripcion:
-      "Desarrollada con Next,js/taildwindcss, Pagina web reponsive enfocada en la promocion y el llamado a la accion De los Posibles Clientes de FastBordados Permite La busqueda Indexada Con la clave fastbordados.app",
+      "Desarrollada con Next,js/taildwindcss, Pagina web reponsive enfocada en la promocion y el llamado a la accion De los Posibles Clientes de FastBordados Permite La busqueda Indexada en el buscador de google Con la clave fastbordados.app",
     imagen: [
       "/images/fast1.PNG",
       "/images/fast2.png",
