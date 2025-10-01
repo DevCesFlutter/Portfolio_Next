@@ -2,22 +2,6 @@ import ProyectoCard, { Proyecto } from "./ProyectoCard";
 
 const proyectos: Proyecto[] = [
   {
-    titulo: "App NPS Parque Turistik",
-    descripcion:
-      "Desarrollada con Flutter, Node.js, Express y SQL Server. Permite evaluar servicios mediante opciones múltiples() y en múltiples idiomas, almacenar datos en una base de datos sql server, gestionar información de forma offline y Sincronizar al obtener conexion",
-    imagen: [
-      "/images/turis1.png",
-      "/images/turis2.png",
-      "/images/turis3.png",
-      "/images/turis4.png",
-      "/images/turis6.png",
-      "/images/turis7.png",
-    ],
-    alt: "App NPS Parque Turistik",
-    repositorio: null,
-    url: "",
-  },
-  {
     titulo: "App Gestion de inventarios y envios",
     descripcion:
       "Desarrollada con Flutter,dart,SupaBase,permite gestionar el stock y crear envios gestionar su estado de enviado el estado pendientes de enviar.",
@@ -27,8 +11,6 @@ const proyectos: Proyecto[] = [
       "/images/inven1.2.png",
       "/images/inven1.3.png",
       "/images/inven1.4.png",
-      "/images/inven1.5.png",
-      "/images/inven1.6.png",
     ],
     alt: "AppInventarius",
     repositorio: null,
@@ -47,6 +29,22 @@ const proyectos: Proyecto[] = [
     alt: "LandingPageBordados",
     repositorio: "https://github.com/DevCesFlutter/Lading_Fast_Bordados",
     url: "https://fastbordados.vercel.app/",
+  },
+  {
+    titulo: "App NPS Parque Turistik",
+    descripcion:
+      "Desarrollada con Flutter, Node.js, Express y SQL Server. Permite evaluar servicios mediante opciones múltiples() y en múltiples idiomas, almacenar datos en una base de datos sql server, gestionar información de forma offline y Sincronizar al obtener conexion",
+    imagen: [
+      "/images/turis1.png",
+      "/images/turis2.png",
+      "/images/turis3.png",
+      "/images/turis4.png",
+      "/images/turis6.png",
+      "/images/turis7.png",
+    ],
+    alt: "App NPS Parque Turistik",
+    repositorio: null,
+    url: "",
   },
   // Puedes agregar más proyectos aquí
 ];

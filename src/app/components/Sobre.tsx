@@ -4,9 +4,9 @@ export default function Sobre() {
       <h3 className="text-3xl font-semibold mb-6">Sobre mí</h3>
       <p className="text-lg mb-8">
         Soy <strong>Cesar Negrete</strong>, Ingeniero en Informática
-        especializado en desarrollo full stack, con enfoque en React, Next.js y
-        tecnologías web modernas. Me apasiona ayudar a pequeños negocios a
-        digitalizarse con soluciones a medida, funcionales y escalables.
+        especializado en desarrollo full stack, con enfoque en React, Next.js
+        ,Flutter tecnologías modernas. Me apasiona Inovar con solciones
+        tecnologicas que tengan un real impacto en la vida de las personas
       </p>
 
       <div className="relative w-50 h-50 mx-auto rounded-full p-1">

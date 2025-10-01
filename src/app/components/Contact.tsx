@@ -36,7 +36,7 @@ export default function Contacto() {
             href="https://wa.me/+56953373116"
             target="_blank"
             rel="noopener noreferrer"
-            className="flex-1 min-w-[200px] bg-green-600 text-white py-3 px-6 rounded-xl text-lg hover:bg-green-700 transition flex items-center justify-center gap-2"
+            className="flex-1 min-w-[200px] bg-green-600 text-white py-3 px-6 rounded-xl text-lg hover:bg-green-700 transition flex items-center justify-center gap-2 "
           >
             <FaWhatsapp className="text-xl" />
             WhatsApp
