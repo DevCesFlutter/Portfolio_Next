@@ -8,7 +8,7 @@ const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
   title: "Portafolio Profesional",
-  description: "Desarrollador Web | Frontend | React | Next.js",
+  description: "Ingeniero de proyectos|Aws|Azure Cloud Computing",
 };
 
 export default function RootLayout({

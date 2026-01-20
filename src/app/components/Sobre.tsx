@@ -3,10 +3,10 @@ export default function Sobre() {
     <section id="about" className="py-20 px-6 max-w-3xl mx-auto text-center">
       <h3 className="text-3xl font-semibold mb-6">Sobre mí</h3>
       <p className="text-lg mb-8">
-        Soy <strong>Cesar Negrete</strong>, Ingeniero en Informática
-        especializado en desarrollo full stack, con enfoque en React, Next.js
-        ,Flutter tecnologías modernas. Me apasiona Inovar con solciones
-        tecnologicas que tengan un real impacto en la vida de las personas
+        Soy <strong>Cesar Negrete</strong>,Ingeniero en Informática
+        especializado en tecnologías Cloud. Apasionado por innovar mediante
+        soluciones tecnológicas que generen un impacto real en las
+        organizaciones , ayudándolas a optimizar tiempos, recursos y procesos.
       </p>
 
       <div className="relative w-50 h-50 mx-auto rounded-full p-1">

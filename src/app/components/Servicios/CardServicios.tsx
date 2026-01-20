@@ -5,34 +5,34 @@ export default function CardServicios() {
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
       {[
         {
-          title: "Desarrollo de Apps Móviles",
-          desc: "Creación de aplicaciones móviles multiplataforma utilizando Flutter y Dart.",
-          highlight: "Experiencia con soporte offline y multilenguaje",
+          title: "Infraestructura Cloud en Azure",
+          desc: "Creación, configuración y administración de máquinas virtuales, redes virtuales y reglas de acceso en Microsoft Azure.",
+          highlight: "VMs, NSG, apertura segura de puertos y hardening básico",
         },
         {
-          title: "Aplicaciones Web Full-Stack",
-          desc: "Desarrollo de aplicaciones web modernas con Next.js, Node.js y Express.js.",
-          highlight: "Integración de APIs y bases de datos relacionales",
+          title: "Soporte Cloud y Operación",
+          desc: "Soporte técnico en entornos cloud, resolución de incidencias y monitoreo de recursos críticos.",
+          highlight: "Diagnóstico de fallas y continuidad operativa",
         },
         {
-          title: "Optimización SEO y Contenido",
-          desc: "Mejora de posicionamiento web mediante técnicas de SEO y generación de contenido con IA.",
-          highlight: "Incremento comprobado en alcance y engagement",
+          title: "Almacenamiento en la Nube",
+          desc: "Integración y administración de servicios de almacenamiento como Azure Blob Storage y S3.",
+          highlight: "Gestión de permisos, acceso privado y optimización",
         },
         {
-          title: "Diseño UI/UX",
-          desc: "Prototipado y diseño de interfaces de usuario atractivas y funcionales con Figma.",
-          highlight: "Enfoque en experiencia de usuario y accesibilidad",
+          title: "Seguridad Cloud",
+          desc: "Revisión de alertas de seguridad, configuraciones básicas de protección y buenas prácticas.",
+          highlight: "Análisis de alertas y reducción de riesgos",
         },
         {
-          title: "Integración de APIs y Servicios",
-          desc: "Conexión e integración de servicios externos y APIs RESTful.",
-          highlight: "Uso eficiente de SWR y manejo de datos en tiempo real",
+          title: "Simulación y Concientización en Seguridad",
+          desc: "Apoyo en simulaciones de phishing y revisión de reportes para mejorar la postura de seguridad.",
+          highlight: "Concientización y detección temprana",
         },
         {
-          title: "Metodologías Ágiles",
-          desc: "Gestión de proyectos y desarrollo ágil utilizando Scrum y Kanban.",
-          highlight: "Certificación en Scrum Fundamentals",
+          title: "Experiencia en AWS",
+          desc: "Experiencia complementaria en entornos AWS para administración básica de infraestructura.",
+          highlight: "EC2, Security Groups y S3",
         },
       ].map(({ title, desc, highlight }, i) => (
         <div

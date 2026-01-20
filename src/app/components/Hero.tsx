@@ -17,7 +17,7 @@ export default function Hero() {
       <div className="relative z-20 text-[var(--foreground)] animate-fade-in delay-200">
         <h1 className="text-4xl sm:text-6xl font-bold mb-4">Cesar Negrete</h1>
         <h3 className="text-3xl sm:text-4xl font-light mb-4">
-          Desarrollador FullStack
+          Ingeniero en infraestructura y seguridad Cloud | Aws | Azure
         </h3>
         <p className="text-xs sm:text-2xl font-sans mb-6">
           Ingeniero En Informatica
