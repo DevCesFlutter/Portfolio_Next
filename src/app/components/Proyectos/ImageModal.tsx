@@ -1,6 +1,7 @@
 "use client";
 import { FiX, FiChevronLeft, FiChevronRight } from "react-icons/fi";
 import { useEffect, useState, useRef } from "react";
+import Image from "next/image";
 
 export default function ImageModal({
   images,
@@ -66,7 +67,7 @@ export default function ImageModal({
         </button>
 
         <div className="w-full h-full overflow-auto touch-pan-y">
-          <img
+          <Image
             src={images[currentIndex]}
             alt={`${alt} - Imagen ${currentIndex + 1}`}
             className="w-full h-auto max-h-[80vh] object-contain"
